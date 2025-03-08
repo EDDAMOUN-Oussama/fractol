@@ -1,0 +1,83 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   math_util.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: oeddamou <oeddamou@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/03/08 13:48:28 by oeddamou          #+#    #+#             */
+/*   Updated: 2025/03/08 13:51:56 by oeddamou         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "fractol.h"
+
+double	ft_change(double p, double new_min, double new_max, double old_max)
+{
+	return ((new_max - new_min) * p / old_max + new_min);
+}
+
+double	ft_atod(char *str)
+{
+	double	r;
+	double	s;
+	double	i;
+
+	r = ((s = 1.0), (i = 1.0), 0.0);
+	while ((*str >= 9 && *str <= 13) || *str == ' ')
+		str++;
+	while (*str == '+' || *str == '-')
+	{
+		if (*str == '-')
+			s *= -1.0;
+		str++;
+	}
+	while (*str >= '0' && *str <= '9')
+		r = r * 10 + s * (*(str++) - '0');
+	if (*str && *(str++) == '.')
+    	while (*str >= '0' && *str <= '9')
+		{
+			i /= 10.0;
+			r = r + s * (*str - '0') * i;
+			str++;
+		}
+	return (r);
+}
+
+void	ft_free(t_fractol *f, int c)
+{
+	if (f->img.img)
+		mlx_destroy_image(f->mlx_coniction, f->img.img);
+	if (f->mlx_window)
+		mlx_destroy_window(f->mlx_coniction, f->mlx_window);
+	if (f->mlx_coniction)
+		free(f->mlx_coniction);
+	exit(c);
+}
+
+int	key_hook(int keycode, t_fractol *f)
+{
+	if (keycode == 53)
+		ft_free(f, 0);
+	return (0);
+}
+
+int	close_window(t_fractol *f)
+{
+	ft_free(f, 0);
+	return (0);
+}
+
+int	mouse_zoom(int button, int x, int y, t_fractol *f)
+{
+	double	zoom_factor;
+
+	zoom_factor = 1.1;
+	x = y;
+	if (button == 4)
+		f->zoom *= zoom_factor;
+	else if (button == 5)
+		f->zoom /= zoom_factor;
+	ft_fractol(f);
+	return (0);
+}
