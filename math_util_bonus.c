@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   math_util.c                                        :+:      :+:    :+:   */
+/*   math_util_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oeddamou <oeddamou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/08 13:48:28 by oeddamou          #+#    #+#             */
-/*   Updated: 2025/03/09 07:54:31 by oeddamou         ###   ########.fr       */
+/*   Created: 2025/03/09 08:06:01 by oeddamou          #+#    #+#             */
+/*   Updated: 2025/03/09 09:15:22 by oeddamou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fractol.h"
+#include "fractol_bonus.h"
 
 double	ft_change(double p, double new_min, double new_max, double old_max)
 {
@@ -71,4 +71,11 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 	if (i == n)
 		return (0);
 	return ((unsigned char)s1[i] - (unsigned char)s2[i]);
+}
+
+double ft_abs(double a, char *s)
+{
+    if (a < 0 && !ft_strncmp("Burning Ship", s, 13))
+        a = -a;
+    return (a);
 }
