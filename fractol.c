@@ -6,7 +6,7 @@
 /*   By: oeddamou <oeddamou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 21:52:26 by oeddamou          #+#    #+#             */
-/*   Updated: 2025/03/10 10:15:01 by oeddamou         ###   ########.fr       */
+/*   Updated: 2025/03/11 17:52:39 by oeddamou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void	ft_handle_pixel(int i, int j, t_fractol *f)
 	int			cont;
 
 	z.x = ft_change(i, -2, 2, WIDTH) * f->zoom;
-	z.y = ft_change(j, -2, 2, HEIGHT) * f->zoom;
+	z.y = ft_change(j, 2, -2, HEIGHT) * f->zoom;
 	c.y = ((c.x = z.x), z.y);
 	if (!ft_strncmp("Julia", f->name, 6))
 		c.y = ((c.x = f->j_x), f->j_y);
