@@ -6,7 +6,7 @@
 /*   By: oeddamou <oeddamou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 08:06:01 by oeddamou          #+#    #+#             */
-/*   Updated: 2025/03/09 09:15:22 by oeddamou         ###   ########.fr       */
+/*   Updated: 2025/03/14 16:41:52 by oeddamou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,9 +73,9 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 	return ((unsigned char)s1[i] - (unsigned char)s2[i]);
 }
 
-double ft_abs(double a, char *s)
+double	ft_abs(double a, char *s)
 {
-    if (a < 0 && !ft_strncmp("Burning Ship", s, 13))
-        a = -a;
-    return (a);
+	if (a < 0 && !ft_strncmp("Burning Ship", s, 13))
+		a = -a;
+	return (a);
 }

@@ -6,7 +6,7 @@
 /*   By: oeddamou <oeddamou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 08:03:20 by oeddamou          #+#    #+#             */
-/*   Updated: 2025/03/13 10:30:59 by oeddamou         ###   ########.fr       */
+/*   Updated: 2025/03/14 17:16:31 by oeddamou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ void	ft_initial(t_fractol *f, int ac, char **av)
 		ft_free(f, 1);
 	f->img.addr = mlx_get_data_addr(f->img.img, &f->img.bpp,
 			&f->img.line_length, &f->img.endian);
-	f->zoom = 1.0;
 	if (!ft_strncmp("Julia", av[1], 6) || !ft_strncmp("Burning Ship", av[1],
 			13))
 	{
@@ -55,17 +54,16 @@ void	ft_handle_pixel(int i, int j, t_fractol *f)
 	t_complex	z;
 	t_complex	c;
 	double		tmp;
-	double		color;
+	int			color;
 	int			cont;
 
-	z.x = ft_abs((ft_change(i, -2, 2, WIDTH)+ f->shift_x) * f->zoom , f->name);
-	z.y = ft_abs((ft_change(j, 2, -2, HEIGHT)+ f->shift_y) * f->zoom , f->name);
-	c.y = ((c.x = z.x), z.y);
+	z.x = ft_abs(ft_change(i, -2, 2, WIDTH) * f->zoom + f->shift_x, f->name);
+	z.y = ft_abs(ft_change(j, 2, -2, HEIGHT) * f->zoom + f->shift_y, f->name);
+	c.y = ((c.x = z.x, (cont = 0)), z.y);
 	if (!ft_strncmp("Julia", f->name, 6) || !ft_strncmp("Burning Ship", f->name,
 			13))
 		c.y = ((c.x = f->j_x), f->j_y);
-	cont = 0;
-	while (cont < 100)
+	while (cont < f->iteretion)
 	{
 		tmp = z.x;
 		z.x = z.x * z.x - z.y * z.y + c.x;
@@ -73,11 +71,11 @@ void	ft_handle_pixel(int i, int j, t_fractol *f)
 		cont++;
 		if (z.x * z.x + z.y * z.y > 4)
 		{
-			color = ft_change(cont, 0xFFFFFF, 0xA, 100) * (f->zoom * 0.9);
+			color = ft_change(cont, 0xFFFFFF, 0xA, f->iteretion);
 			return (put_pixel(&f->img, i, j, color));
 		}
 	}
-	put_pixel(&f->img, i, j, 0x0 * (f->zoom * 0.9));
+	put_pixel(&f->img, i, j, 0x0);
 }
 
 void	ft_fractol(t_fractol *f)
@@ -108,6 +106,7 @@ int	main(int ac, char **av)
 			&& (!ft_strncmp("Julia", av[1], 6) || !ft_strncmp("Burning Ship",
 					av[1], 13))))
 	{
+		fractol.zoom = ((fractol.iteretion = 42), 1.0);
 		fractol.name = av[1];
 		ft_initial(&fractol, ac, av);
 		ft_fractol(&fractol);

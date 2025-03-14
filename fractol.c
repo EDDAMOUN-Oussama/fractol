@@ -6,7 +6,7 @@
 /*   By: oeddamou <oeddamou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 21:52:26 by oeddamou          #+#    #+#             */
-/*   Updated: 2025/03/11 17:52:39 by oeddamou         ###   ########.fr       */
+/*   Updated: 2025/03/14 15:37:31 by oeddamou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void	ft_handle_pixel(int i, int j, t_fractol *f)
 	if (!ft_strncmp("Julia", f->name, 6))
 		c.y = ((c.x = f->j_x), f->j_y);
 	cont = 0;
-	while (cont < 100)
+	while (cont < 42)
 	{
 		tmp = z.x;
 		z.x = z.x * z.x - z.y * z.y + c.x;
@@ -71,7 +71,7 @@ void	ft_handle_pixel(int i, int j, t_fractol *f)
 		cont++;
 		if (z.x * z.x + z.y * z.y > 4)
 		{
-			color = ft_change(cont, 0xFF, 0xF, 100);
+			color = ft_change(cont, 0xFF, 0xA, 42);
 			return (put_pixel(&f->img, i, j, color));
 		}
 	}

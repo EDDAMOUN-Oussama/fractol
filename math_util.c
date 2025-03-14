@@ -6,7 +6,7 @@
 /*   By: oeddamou <oeddamou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 13:48:28 by oeddamou          #+#    #+#             */
-/*   Updated: 2025/03/09 07:54:31 by oeddamou         ###   ########.fr       */
+/*   Updated: 2025/03/14 16:42:01 by oeddamou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,7 @@ void	ft_free(t_fractol *f, int c)
 	if (f->mlx_window)
 		mlx_destroy_window(f->mlx_coniction, f->mlx_window);
 	if (f->mlx_coniction)
-		free(f->mlx_coniction);
-	exit(c);
+		exit(c);
 }
 
 int	ft_strncmp(const char *s1, const char *s2, size_t n)
