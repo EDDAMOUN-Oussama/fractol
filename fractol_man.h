@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fractol.h                                          :+:      :+:    :+:   */
+/*   fractol_man.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oeddamou <oeddamou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 07:54:46 by oeddamou          #+#    #+#             */
-/*   Updated: 2025/03/14 17:20:36 by oeddamou         ###   ########.fr       */
+/*   Updated: 2025/03/15 13:19:45 by oeddamou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FRACTOL_H
-# define FRACTOL_H
+#ifndef FRACTOL_MAN_H
+# define FRACTOL_MAN_H
 
 # include <mlx.h>
 # include <stdlib.h>
@@ -37,7 +37,7 @@ typedef struct s_img
 
 typedef struct s_fractol
 {
-	void	*mlx_coniction;
+	void	*mlx_connection;
 	void	*mlx_window;
 	t_img	img;
 	char	*name;

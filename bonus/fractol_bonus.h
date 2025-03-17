@@ -6,7 +6,7 @@
 /*   By: oeddamou <oeddamou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 08:04:17 by oeddamou          #+#    #+#             */
-/*   Updated: 2025/03/14 17:04:32 by oeddamou         ###   ########.fr       */
+/*   Updated: 2025/03/15 07:39:04 by oeddamou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ typedef struct s_img
 
 typedef struct s_fractol
 {
-	void	*mlx_coniction;
+	void	*mlx_connection;
 	void	*mlx_window;
 	t_img	img;
 	char	*name;
@@ -46,7 +46,7 @@ typedef struct s_fractol
 	double	shift_y;
 	double	j_x;
 	double	j_y;
-	int		iteretion;
+	int		iteration;
 
 }			t_fractol;
 
@@ -59,5 +59,6 @@ int			close_window(t_fractol *f);
 void		ft_fractol(t_fractol *f);
 int			ft_strncmp(const char *s1, const char *s2, size_t n);
 double		ft_abs(double a, char *s);
+void		put_pixel(t_img *data, int x, int y, int color);
 
 #endif

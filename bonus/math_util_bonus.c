@@ -6,7 +6,7 @@
 /*   By: oeddamou <oeddamou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 08:06:01 by oeddamou          #+#    #+#             */
-/*   Updated: 2025/03/14 16:41:52 by oeddamou         ###   ########.fr       */
+/*   Updated: 2025/03/15 07:07:03 by oeddamou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,11 +49,9 @@ double	ft_atod(char *str)
 void	ft_free(t_fractol *f, int c)
 {
 	if (f->img.img)
-		mlx_destroy_image(f->mlx_coniction, f->img.img);
+		mlx_destroy_image(f->mlx_connection, f->img.img);
 	if (f->mlx_window)
-		mlx_destroy_window(f->mlx_coniction, f->mlx_window);
-	if (f->mlx_coniction)
-		free(f->mlx_coniction);
+		mlx_destroy_window(f->mlx_connection, f->mlx_window);
 	exit(c);
 }
 
@@ -75,7 +73,7 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 
 double	ft_abs(double a, char *s)
 {
-	if (a < 0 && !ft_strncmp("Burning Ship", s, 13))
+	if (a < 0 && !ft_strncmp("Burning", s, 8))
 		a = -a;
 	return (a);
 }

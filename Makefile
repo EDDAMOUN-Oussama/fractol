@@ -1,26 +1,34 @@
 NAME = fractol
-SRC = fractol.c util.c math_util.c
+SRC = fractol_man.c util_man.c math_util_man.c
 OBJ = $(SRC:.c=.o)
 
+NAME_B = fractol_bonus
+SRCB = bonus/fractol_bonus.c bonus/util_bonus.c bonus/math_util_bonus.c
+OBJB = $(SRCB:.c=.o)
 
-$(NAME): $(OBJ) fractol.h
+$(NAME): $(OBJ) fractol_man.h
 	cc  $(OBJ) -Wall -Wextra -Werror -lmlx -framework OpenGL -framework AppKit -o $(NAME)
-
-bonus:
-	Make -C ./bonus
 
 all: $(NAME)
 
-%.o: %.c fractol.h
+bonus: $(NAME_B)
+
+$(NAME_B): $(OBJB) bonus/fractol_bonus.h
+	cc  $(OBJB) -Wall -Wextra -Werror  -lmlx -framework OpenGL -framework AppKit -o $(NAME_B)
+
+%_man.o: %_man.c fractol_man.h
+	cc -c $< -Wall -Wextra -Werror -o $@
+
+%_bonus.o: %_bonus.c bonus/fractol_bonus.h
 	cc -c $< -Wall -Wextra -Werror -o $@
 
 clean:
 	rm -rf $(OBJ)
-	Make -C bonus clean
+	rm -rf $(OBJB)
 
 fclean: clean
 	rm -rf $(NAME)
-	Make -C bonus fclean
+	rm -rf $(NAME_B)
 
 re: fclean all
 

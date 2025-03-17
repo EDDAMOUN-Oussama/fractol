@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   math_util.c                                        :+:      :+:    :+:   */
+/*   math_util_man.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oeddamou <oeddamou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 13:48:28 by oeddamou          #+#    #+#             */
-/*   Updated: 2025/03/14 16:42:01 by oeddamou         ###   ########.fr       */
+/*   Updated: 2025/03/15 13:25:29 by oeddamou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fractol.h"
+#include "fractol_man.h"
 
 double	ft_change(double p, double new_min, double new_max, double old_max)
 {
@@ -49,11 +49,10 @@ double	ft_atod(char *str)
 void	ft_free(t_fractol *f, int c)
 {
 	if (f->img.img)
-		mlx_destroy_image(f->mlx_coniction, f->img.img);
+		mlx_destroy_image(f->mlx_connection, f->img.img);
 	if (f->mlx_window)
-		mlx_destroy_window(f->mlx_coniction, f->mlx_window);
-	if (f->mlx_coniction)
-		exit(c);
+		mlx_destroy_window(f->mlx_connection, f->mlx_window);
+	exit(c);
 }
 
 int	ft_strncmp(const char *s1, const char *s2, size_t n)

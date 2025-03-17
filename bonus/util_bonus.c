@@ -6,7 +6,7 @@
 /*   By: oeddamou <oeddamou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 08:05:36 by oeddamou          #+#    #+#             */
-/*   Updated: 2025/03/14 18:06:59 by oeddamou         ###   ########.fr       */
+/*   Updated: 2025/03/15 07:39:13 by oeddamou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,18 +21,18 @@ int	key_hook(int keycode, t_fractol *f)
 	else if (keycode == 124)
 		f->shift_x -= (0.5 * f->zoom);
 	else if (keycode == 125)
-		f->shift_y += (0.5 * f->zoom);
-	else if (keycode == 126)
 		f->shift_y -= (0.5 * f->zoom);
+	else if (keycode == 126)
+		f->shift_y += (0.5 * f->zoom);
 	else
 	{
 		if (keycode == 69)
-			f->iteretion += 5;
+			f->iteration += 5;
 		else if (keycode == 78)
-			f->iteretion -= 5;
-		if (f->iteretion < 0)
-			f->iteretion += 42;
-		f->iteretion %= 100;
+			f->iteration -= 5;
+		if (f->iteration < 0)
+			f->iteration += 42;
+		f->iteration %= 250;
 	}
 	ft_fractol(f);
 	return (0);
@@ -52,15 +52,27 @@ int	mouse_zoom(int button, int x, int y, t_fractol *f)
 	double	new_mouse_y;
 
 	mouse_x = ft_change(x, -2, 2, WIDTH) * f->zoom + f->shift_x;
-	mouse_y = ft_change(y, 2, -2, HEIGHT) * f->zoom + f->shift_y;
+	mouse_y = ft_change(y, -2, 2, HEIGHT) * f->zoom + f->shift_y;
+	if (!ft_strncmp("Julia", f->name, 6))
+		mouse_y = ft_change(y, 2, -2, HEIGHT) * f->zoom + f->shift_y;
 	if (button == 4)
 		f->zoom *= 1.1;
 	if (button == 5)
 		f->zoom *= 0.9;
 	new_mouse_x = ft_change(x, -2, 2, WIDTH) * f->zoom + f->shift_x;
-	new_mouse_y = ft_change(y, 2, -2, HEIGHT) * f->zoom + f->shift_y;
+	new_mouse_y = ft_change(y, -2, 2, HEIGHT) * f->zoom + f->shift_y;
+	if (!ft_strncmp("Julia", f->name, 6))
+		new_mouse_y = ft_change(y, 2, -2, HEIGHT) * f->zoom + f->shift_y;
 	f->shift_x += mouse_x - new_mouse_x;
 	f->shift_y += mouse_y - new_mouse_y;
 	ft_fractol(f);
 	return (0);
+}
+
+void	put_pixel(t_img *data, int x, int y, int color)
+{
+	int	offset;
+
+	offset = (y * data->line_length) + (x * (data->bpp / 8));
+	*(unsigned int *)(data->addr + offset) = color;
 }
