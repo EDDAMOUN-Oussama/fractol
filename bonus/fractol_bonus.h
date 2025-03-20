@@ -6,7 +6,7 @@
 /*   By: oeddamou <oeddamou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 08:04:17 by oeddamou          #+#    #+#             */
-/*   Updated: 2025/03/15 07:39:04 by oeddamou         ###   ########.fr       */
+/*   Updated: 2025/03/19 09:21:42 by oeddamou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,5 +60,6 @@ void		ft_fractol(t_fractol *f);
 int			ft_strncmp(const char *s1, const char *s2, size_t n);
 double		ft_abs(double a, char *s);
 void		put_pixel(t_img *data, int x, int y, int color);
+int			ft_valid(int ac, char **av);
 
 #endif

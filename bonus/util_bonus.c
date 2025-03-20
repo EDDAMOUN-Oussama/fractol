@@ -6,7 +6,7 @@
 /*   By: oeddamou <oeddamou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 08:05:36 by oeddamou          #+#    #+#             */
-/*   Updated: 2025/03/15 07:39:13 by oeddamou         ###   ########.fr       */
+/*   Updated: 2025/03/19 09:51:15 by oeddamou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,4 +75,31 @@ void	put_pixel(t_img *data, int x, int y, int color)
 
 	offset = (y * data->line_length) + (x * (data->bpp / 8));
 	*(unsigned int *)(data->addr + offset) = color;
+}
+
+int	ft_valid(int ac, char **av)
+{
+	int	i;
+	int	c;
+
+	i = 0;
+	c = 0;
+	if (ac == 2)
+		return (1);
+	if (ac > 2)
+	{
+		while (av[2][i])
+		{
+			if (av[2][i] == '.')
+				c++;
+			if (((av[2][i] < '0' || av[2][i] > '9') && (av[2][i] < 9
+						|| av[2][i] > 13) && av[2][i] != '.' && av[2][i] != ' ')
+				|| c > 1)
+				return (0);
+			i++;
+		}
+	}
+	if (ac == 4)
+		return (ft_valid(ac - 1, &av[1]));
+	return (1);
 }

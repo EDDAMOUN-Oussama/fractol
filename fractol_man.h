@@ -6,7 +6,7 @@
 /*   By: oeddamou <oeddamou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 07:54:46 by oeddamou          #+#    #+#             */
-/*   Updated: 2025/03/15 13:19:45 by oeddamou         ###   ########.fr       */
+/*   Updated: 2025/03/19 09:21:59 by oeddamou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,5 +55,7 @@ int			key_hook(int keycode, t_fractol *f);
 int			close_window(t_fractol *f);
 void		ft_fractol(t_fractol *f);
 int			ft_strncmp(const char *s1, const char *s2, size_t n);
+int			ft_valid(int ac, char **av);
+void		ft_print_error(void);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: oeddamou <oeddamou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 21:52:26 by oeddamou          #+#    #+#             */
-/*   Updated: 2025/03/15 13:25:49 by oeddamou         ###   ########.fr       */
+/*   Updated: 2025/03/19 09:18:00 by oeddamou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,7 @@ void	ft_initial(t_fractol *f, int ac, char **av)
 			f->j_y = ((f->j_x = ft_atod(av[2])), f->j_x);
 		if (ac == 4)
 			f->j_x = ((f->j_y = ft_atod(av[3])), ft_atod(av[2]));
-		if (ac == 2 || (ac == 3 && f->j_x * f->j_x > 4) || (ac == 4 && (f->j_x
-					* f->j_x > 4 || f->j_y * f->j_y > 4)))
+		if (ac == 2)
 			f->j_x = ((f->j_y = 0.53), -0.52);
 	}
 }
@@ -102,7 +101,7 @@ int	main(int ac, char **av)
 	t_fractol	fractol;
 
 	if ((ac == 2 && !ft_strncmp("Mandelbrot", av[1], 11)) || (ac > 1 && ac < 5
-			&& !ft_strncmp("Julia", av[1], 6)))
+			&& !ft_strncmp("Julia", av[1], 6) && ft_valid(ac, av)))
 	{
 		fractol.name = av[1];
 		ft_initial(&fractol, ac, av);
@@ -111,9 +110,7 @@ int	main(int ac, char **av)
 	}
 	else
 	{
-		write(2, "Invalid Argements!\nPlease write: \n", 35);
-		write(2, "./fractol Mandelbrot\n Or\n", 26);
-		write(2, "./fractol Julia <double> <double>\n", 35);
+		ft_print_error();
 		exit(1);
 	}
 }

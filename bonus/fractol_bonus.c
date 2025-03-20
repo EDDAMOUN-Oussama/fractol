@@ -6,7 +6,7 @@
 /*   By: oeddamou <oeddamou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 08:03:20 by oeddamou          #+#    #+#             */
-/*   Updated: 2025/03/15 07:38:38 by oeddamou         ###   ########.fr       */
+/*   Updated: 2025/03/19 09:18:32 by oeddamou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,7 @@ void	ft_initial(t_fractol *f, int ac, char **av)
 			f->j_y = ((f->j_x = ft_atod(av[2])), f->j_x);
 		if (ac == 4)
 			f->j_x = ((f->j_y = ft_atod(av[3])), ft_atod(av[2]));
-		if (ac == 2 || (ac == 3 && f->j_x * f->j_x > 4) || (ac == 4 && (f->j_x
-					* f->j_x > 4 || f->j_y * f->j_y > 4)))
+		if (ac == 2)
 			f->j_x = ((f->j_y = 0.53), -0.52);
 	}
 }
@@ -120,9 +119,9 @@ int	main(int ac, char **av)
 {
 	t_fractol	fractol;
 
-	if ((ac == 2 && !ft_strncmp("Mandelbrot", av[1], 11)) || (ac > 1 && ac < 5
-			&& (!ft_strncmp("Julia", av[1], 6) || !ft_strncmp("Burning", av[1],
-					8))))
+	if ((ac == 2 && (!ft_strncmp("Mandelbrot", av[1], 11)
+				|| !ft_strncmp("Burning", av[1], 8))) || (ac > 1 && ac < 5
+			&& !ft_strncmp("Julia", av[1], 6) && ft_valid(ac, av)))
 	{
 		fractol.zoom = 1.0;
 		fractol.iteration = 42;
