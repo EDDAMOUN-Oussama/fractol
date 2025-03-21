@@ -80,8 +80,8 @@ void	put_pixel(t_img *data, int x, int y, int color)
 void	ft_print_error(void)
 {
 	write(2, "Invalid Argements!\nPlease write: \n", 35);
-	write(2, "./fractol \"Mandelbrot\"\n Or\n", 27);
-	write(2, "./fractol \"Julia\" \"x\" \"y\"\n", 27);
+	write(2, "./fractol_bonus \"Mandelbrot\"\n Or\n", 27);
+	write(2, "./fractol \"Julia_bonus \" \"x\" \"y\"\n", 40);
 	write(2, "x and y are real numbers preferably between -2.0 and 2.0\n", 57);
-	write(2, "Or \n./fractol \"Burning\"\n", 25);
+	write(2, "Or \n./fractol_bonus \"Burning\"\n", 31);
 }
