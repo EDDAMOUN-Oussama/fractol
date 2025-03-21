@@ -77,29 +77,11 @@ void	put_pixel(t_img *data, int x, int y, int color)
 	*(unsigned int *)(data->addr + offset) = color;
 }
 
-int	ft_valid(int ac, char **av)
+void	ft_print_error(void)
 {
-	int	i;
-	int	c;
-
-	i = 0;
-	c = 0;
-	if (ac == 2)
-		return (1);
-	if (ac > 2)
-	{
-		while (av[2][i])
-		{
-			if (av[2][i] == '.')
-				c++;
-			if (((av[2][i] < '0' || av[2][i] > '9') && (av[2][i] < 9
-						|| av[2][i] > 13) && av[2][i] != '.' && av[2][i] != ' ')
-				|| c > 1)
-				return (0);
-			i++;
-		}
-	}
-	if (ac == 4)
-		return (ft_valid(ac - 1, &av[1]));
-	return (1);
+	write(2, "Invalid Argements!\nPlease write: \n", 35);
+	write(2, "./fractol \"Mandelbrot\"\n Or\n", 27);
+	write(2, "./fractol \"Julia\" \"x\" \"y\"\n", 27);
+	write(2, "x and y are real numbers preferably between -2.0 and 2.0\n", 57);
+	write(2, "Or \n./fractol \"Burning\"\n", 25);
 }

@@ -1,9 +1,9 @@
 NAME = fractol
-SRC = fractol_man.c util_man.c math_util_man.c
+SRC = fractol_man.c util_man.c math_util_man.c valid_man.c
 OBJ = $(SRC:.c=.o)
 
 NAME_B = fractol_bonus
-SRCB = bonus/fractol_bonus.c bonus/util_bonus.c bonus/math_util_bonus.c
+SRCB = bonus/fractol_bonus.c bonus/util_bonus.c bonus/math_util_bonus.c bonus/valid_bonus.c
 OBJB = $(SRCB:.c=.o)
 
 all: $(NAME)

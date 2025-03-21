@@ -134,10 +134,7 @@ int	main(int ac, char **av)
 	}
 	else
 	{
-		write(2, "Invalid Argements!\nPlease write: \n", 35);
-		write(2, "./fractol Mandelbrot\n Or\n", 26);
-		write(2, "./fractol Julia <double> <double>\n", 35);
-		write(2, "Or \n./fractol Burning\n", 23);
+		ft_print_error();
 		exit(1);
 	}
 }

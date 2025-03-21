@@ -61,5 +61,6 @@ int			ft_strncmp(const char *s1, const char *s2, size_t n);
 double		ft_abs(double a, char *s);
 void		put_pixel(t_img *data, int x, int y, int color);
 int			ft_valid(int ac, char **av);
+void	ft_print_error(void);
 
 #endif
