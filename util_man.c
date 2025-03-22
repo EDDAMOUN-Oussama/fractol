@@ -6,7 +6,7 @@
 /*   By: oeddamou <oeddamou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 07:00:38 by oeddamou          #+#    #+#             */
-/*   Updated: 2025/03/19 09:49:18 by oeddamou         ###   ########.fr       */
+/*   Updated: 2025/03/22 06:40:34 by oeddamou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,8 @@ int	mouse_zoom(int button, int x, int y, t_fractol *f)
 
 void	ft_print_error(void)
 {
-	write(2, "Invalid Argements!\nPlease write: \n", 35);
+	write(2, "Invalid Argements!\nPlease write: \n", 34);
 	write(2, "./fractol \"Mandelbrot\"\n Or\n", 27);
-	write(2, "./fractol \"Julia\" \"x\" \"y\"\n", 27);
+	write(2, "./fractol \"Julia\" \'x\' \'y\'\n", 26);
 	write(2, "x and y are real numbers preferably between -2.0 and 2.0\n", 57);
 }

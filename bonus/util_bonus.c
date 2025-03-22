@@ -6,7 +6,7 @@
 /*   By: oeddamou <oeddamou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 08:05:36 by oeddamou          #+#    #+#             */
-/*   Updated: 2025/03/19 09:51:15 by oeddamou         ###   ########.fr       */
+/*   Updated: 2025/03/22 06:50:27 by oeddamou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,9 @@ int	key_hook(int keycode, t_fractol *f)
 			f->iteration += 5;
 		else if (keycode == 78)
 			f->iteration -= 5;
-		if (f->iteration < 0)
+		if (f->iteration < 7)
 			f->iteration += 42;
-		f->iteration %= 250;
+		f->iteration %= 300;
 	}
 	ft_fractol(f);
 	return (0);
@@ -79,9 +79,9 @@ void	put_pixel(t_img *data, int x, int y, int color)
 
 void	ft_print_error(void)
 {
-	write(2, "Invalid Argements!\nPlease write: \n", 35);
-	write(2, "./fractol_bonus \"Mandelbrot\"\n Or\n", 27);
-	write(2, "./fractol \"Julia_bonus \" \"x\" \"y\"\n", 40);
+	write(2, "Invalid Argements!\nPlease write: \n", 34);
+	write(2, "./fractol_bonus \"Mandelbrot\" \n Or\n", 34);
+	write(2, "./fractol_bonus \"Julia\" \'x\' \'y\'\n", 32);
 	write(2, "x and y are real numbers preferably between -2.0 and 2.0\n", 57);
-	write(2, "Or \n./fractol_bonus \"Burning\"\n", 31);
+	write(2, " Or \n./fractol_bonus \"Burning\"\n", 31);
 }
